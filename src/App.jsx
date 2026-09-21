@@ -13,41 +13,42 @@ function App() {
 
         </div>
 
-        <div>
-          <h1>Shadow of the Colossus</h1>
-          <p>
-            Kanskje tekst her også ja
+        <div className="titletext">
+          <h1>Mer enn et spill</h1>
+          <p className="subtitle">
+            en verden som fortsatt vekker spørsmål
           </p>
         </div>
 
          <h2>Tekst til undertittel for knapper</h2>
           <div className="button-row">
+           
             <OfficalPageButton
-              className="official-page-button"
+              
               onClick={() => window.open('https://www.playstation.com/', '_blank')}
             >
-              Official Page
+              Karakterer
             </OfficalPageButton>
 
             <OfficalPageButton
-              className="official-page-button"
+              
               onClick={() => window.open('https://www.playstation.com/', '_blank')}
             >
-              Official Page
+              Tutorial
             </OfficalPageButton>
 
             <OfficalPageButton
-              className="official-page-button"
+            
               onClick={() => window.open('https://www.playstation.com/', '_blank')}
             >
-              Official Page
+              Utvikling
             </OfficalPageButton>
             
             <OfficalPageButton
-              className="official-page-button"
+              
               onClick={() => window.open('https://www.playstation.com/', '_blank')}
             >
-              Official Page
+              Versjoner
             </OfficalPageButton>
           </div>
 

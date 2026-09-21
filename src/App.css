@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
 .counter {
   font-size: 16px;
   padding: 5px 10px;
@@ -160,4 +161,25 @@
   justify-content: center;
   gap: 3px;
   flex-wrap: wrap;
+}
+
+.titletext {
+  position: relative;
+  left: auto;
+  top: -110px;
+  text-align: center;
+
+  h1 {
+    font-size: 30px;
+    letter-spacing: -1.68px;
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+  }
+  p.subtitle {
+    font-size: 17px;
+    line-height: 0%;
+    letter-spacing: -0.24px;
+    margin: 0 0 2px;
+  }
 }
