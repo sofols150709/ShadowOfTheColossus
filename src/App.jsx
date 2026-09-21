@@ -53,12 +53,66 @@ function App() {
             </OfficalPageButton>
           </div>
 
-
-
-
-
-
       </section>
+
+
+
+      <section id="UtforskVerdenen">
+        <div className="UtorskVerdenen">
+          <h2 className="fourchoice-title">Utforsk verdenen</h2>
+
+          <div className="fourchoice-blocks">
+
+            <article className="choice">
+              <div className="choice-image">Bilde av en koloss</div>
+              <div className="choice-info">
+                <div>
+                  <h3>Kolossene</h3>
+                  <p>Møt de enorme skapningene som vokter det forbudte landet.</p>
+                </div>
+                <button className="choice-arrow" type="button" aria-label="Les mer om kolossene">→</button>
+              </div>
+            </article>
+
+            <article className="choice">
+              <div className="choice-image">Bilde av sverdet</div>
+              <div className="choice-info">
+                <div>
+                  <h3>Sverdet</h3>
+                  <p>Oppdag våpenet som viser veien til din neste utfordring.</p>
+                </div>
+                <button className="choice-arrow" type="button" aria-label="Les mer om sverdet">→</button>
+              </div>
+            </article>
+
+            <article className="choice">
+              <div className="choice-image">Bilde av ruinene</div>
+              <div className="choice-info">
+                <div>
+                  <h3>Verdenen</h3>
+                  <p>Utforsk ruinene, slettene og hemmelighetene mellom dem.</p>
+                </div>
+                <button className="choice-arrow" type="button" aria-label="Les mer om verdenen">→</button>
+              </div>
+            </article>
+
+            <article className="choice">
+              <div className="choice-image">Bilde av reisen</div>
+              <div className="choice-info">
+                <div>
+                  <h3>Reisen</h3>
+                  <p>Følg Wander og Agro på ferden gjennom det ukjente.</p>
+                </div>
+                <button className="choice-arrow" type="button" aria-label="Les mer om reisen">→</button>
+              </div>
+            </article>
+
+          </div>
+          
+        </div>
+      </section>
+
+
 
       <section id="next-steps">
         <div id="docs">
