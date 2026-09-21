@@ -20,8 +20,9 @@ function App() {
           </p>
         </div>
 
-         <h2>Tekst til undertittel for knapper</h2>
           <div className="button-row">
+            <h2 className="row-title">Dykk dypere i den offisielle siden</h2>
+
            
             <OfficalPageButton
               
