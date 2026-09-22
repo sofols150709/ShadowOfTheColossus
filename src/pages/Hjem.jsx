@@ -1,8 +1,8 @@
-import OfficalPageButton from './components/Buttons/OfficalPageButton.jsx'
-import heroImg from './assets/Hero.png'
-import './App.css'
+import OfficalPageButton from '../components/Buttons/OfficalPageButton.jsx'
+import heroImg from '../assets/Hero.png'
+import './Hjem.css'
 
-function App() {
+function Hjem() {
 
   return (
     <>
@@ -114,23 +114,24 @@ function App() {
 
 
 
-      <section id="next-steps">
+      <section id="banner">
         <div id="docs">
-
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-
-            </li>
-          </ul>
+          <div className="banner-picture">
+            <img src="path/to/your/image.jpg" alt="SETT INN BILDE HER" className="banner-image" />
+          </div>
         </div>
       </section>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
+
+      <section id="footer">
+        <div id="footer-content">
+          <p>© 2024 Shadow of the Colossus. All rights reserved.</p>
+        </div>
+      </section>
+
+
     </>
   )
 }
 
-export default App
+export default Hjem

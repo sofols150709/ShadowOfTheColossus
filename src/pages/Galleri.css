@@ -1,0 +1,17 @@
+.gallery-page {
+  width: 100%;
+  min-height: 100svh;
+  padding-bottom: 72px;
+  box-sizing: border-box;
+}
+
+.gallery-hero {
+  width: 100%;
+}
+
+.gallery-hero img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
