@@ -11,8 +11,7 @@ function Galleri() {
                 </div>
             
                 <div>
-                    <h1>Galleri</h1>
-                    <p>Velkommen til galleriet!</p>
+                    <h1>Gallerii</h1>
                 </div>
             </section>
 
