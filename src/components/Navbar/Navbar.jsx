@@ -2,11 +2,11 @@ import './Navbar.css'
 import NavItem from './NavItem.jsx'
 import { usePreferences } from '../Preferences/usePreferences.js'
 
-import homeIcon from '../../assets/nav-icons/home.svg'
-import galleryIcon from '../../assets/nav-icons/gallery.svg'
-import mapIcon from '../../assets/nav-icons/map.svg'
-import loreIcon from '../../assets/nav-icons/lore.svg'
-import theoriesIcon from '../../assets/nav-icons/theories.svg'
+import homeIcon from '../../assets/nav-icons/home.png'
+import galleryIcon from '../../assets/nav-icons/gallery.png'
+import mapIcon from '../../assets/nav-icons/map.png'
+import loreIcon from '../../assets/nav-icons/lore.png'
+import theoriesIcon from '../../assets/nav-icons/theories.png'
 
 const links = [
   ['/', 'home', homeIcon],
