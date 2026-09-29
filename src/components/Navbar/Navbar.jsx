@@ -1,44 +1,32 @@
-import { Link } from 'react-router-dom'
 import './Navbar.css'
+import NavItem from './NavItem.jsx'
+import { usePreferences } from '../Preferences/usePreferences.js'
+
+import homeIcon from '../../assets/nav-icons/home.svg'
+import galleryIcon from '../../assets/nav-icons/gallery.svg'
+import mapIcon from '../../assets/nav-icons/map.svg'
+import loreIcon from '../../assets/nav-icons/lore.svg'
+import theoriesIcon from '../../assets/nav-icons/theories.svg'
+
+const links = [
+  ['/', 'home', homeIcon],
+  ['/galleri', 'gallery', galleryIcon],
+  ['/kart', 'map', mapIcon],
+  ['/lore', 'lore', loreIcon],
+  ['/fan-teorier', 'theories', theoriesIcon],
+]
 
 function Navbar() {
+  const { t } = usePreferences()
+
   return (
     <nav className="navbar-content" aria-label="Hovednavigasjon">
       <ul>
-        <li>
-          <div className="logo-container">
-            <span className="nav-placeholder" aria-hidden="true" />
-          </div>
-          <Link to="/">Hjem</Link>
-        </li>
-
-        <li>
-          <div className="logo-container">
-            <span className="nav-placeholder" aria-hidden="true" />
-          </div>
-          <Link to="/galleri">Galleri</Link>
-        </li>
-
-        <li>
-          <div className="logo-container">
-            <span className="nav-placeholder" aria-hidden="true" />
-          </div>
-          <a href="#Map">Kart</a>
-        </li>
-
-        <li>
-          <div className="logo-container">
-            <span className="nav-placeholder" aria-hidden="true" />
-          </div>
-          <a href="#Lore">Lore</a>
-        </li>
-
-        <li>
-          <div className="logo-container">
-            <span className="nav-placeholder" aria-hidden="true" />
-          </div>
-          <a href="#FanTheories">Fan-teorier</a>
-        </li>
+        {links.map(([to, label, icon]) => (
+          <NavItem to={to} icon={icon} key={to}>
+            {t[label]}
+          </NavItem>
+        ))}
       </ul>
     </nav>
   )

@@ -1,0 +1,16 @@
+import { useEffect, useState } from 'react'
+import { supabase } from '../../lib/supabase.js'
+import { useAuth } from './useAuth.js'
+import { usePreferences } from '../Preferences/usePreferences.js'
+import './AccountButton.css'
+
+function AccountButton(){
+  const {user}=useAuth(),{tr}=usePreferences()
+  const [open,setOpen]=useState(false),[mode,setMode]=useState('login'),[email,setEmail]=useState(''),[password,setPassword]=useState(''),[username,setUsername]=useState(''),[message,setMessage]=useState(''),[busy,setBusy]=useState(false)
+  useEffect(()=>{if(!open)return undefined;const close=e=>e.key==='Escape'&&setOpen(false);window.addEventListener('keydown',close);return()=>window.removeEventListener('keydown',close)},[open])
+  async function submit(event){event.preventDefault();setBusy(true);setMessage('');const result=mode==='login'?await supabase.auth.signInWithPassword({email,password}):await supabase.auth.signUp({email,password,options:{data:{username:username.trim()}}});setBusy(false);if(result.error)return setMessage(result.error.message);if(mode==='register'&&!result.data.session)setMessage(tr('Sjekk e-posten din og bekreft kontoen før du logger inn.'));else{setOpen(false);setPassword('')}}
+  async function logout(){await supabase.auth.signOut();setOpen(false)}
+  const displayName=user?.user_metadata?.username||user?.email?.split('@')[0]
+  return <><button type="button" className="account-trigger" onClick={()=>setOpen(true)}><span className="account-icon" aria-hidden="true">{user?displayName?.charAt(0).toUpperCase():'♙'}</span><span>{user?displayName:tr('Logg inn')}</span></button>{open&&<div className="auth-modal" role="dialog" aria-modal="true" aria-labelledby="auth-title"><button className="auth-backdrop" onClick={()=>setOpen(false)} aria-label={tr('Lukk')}/><section className="auth-panel"><button className="auth-close" onClick={()=>setOpen(false)} aria-label={tr('Lukk')}>×</button>{user?<div className="auth-account"><p className="auth-kicker">{tr('Innlogget som')}</p><h2 id="auth-title">{displayName}</h2><p>{user.email}</p><button className="auth-submit" onClick={logout}>{tr('Logg ut')}</button></div>:<><p className="auth-kicker">{tr('Det forbudte landet')}</p><h2 id="auth-title">{tr(mode==='login'?'Logg inn':'Opprett konto')}</h2><p>{tr('Logg inn for å stemme og delta i diskusjonen.')}</p><form onSubmit={submit}>{mode==='register'&&<label>{tr('Brukernavn')}<input value={username} onChange={e=>setUsername(e.target.value)} minLength="2" maxLength="30" required/></label>}<label>{tr('E-post')}<input type="email" value={email} onChange={e=>setEmail(e.target.value)} required/></label><label>{tr('Passord')}<input type="password" value={password} onChange={e=>setPassword(e.target.value)} minLength="6" required/></label>{message&&<p className="auth-message" role="status">{message}</p>}<button className="auth-submit" disabled={busy}>{tr(busy?'Vennligst vent ...':mode==='login'?'Logg inn':'Registrer deg')}</button></form><button className="auth-switch" onClick={()=>{setMode(mode==='login'?'register':'login');setMessage('')}}>{tr(mode==='login'?'Ny her? Opprett en konto':'Har du konto? Logg inn')}</button></>}</section></div>}</>
+}
+export default AccountButton
