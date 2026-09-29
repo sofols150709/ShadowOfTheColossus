@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import Hero from '../assets/fan-teorier-hero.jpg'
-import Wander from '../assets/Hero.png'
+import Wander from '../assets/hero.png'
 import Lore from '../assets/lore-hero.jpg'
 import Map from '../assets/forbidden-lands-map.png'
 import Colossus from '../assets/kart-hero.jpg'

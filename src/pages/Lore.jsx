@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import WanderImage from '../assets/Hero.png'
+import WanderImage from '../assets/hero.png'
 import LoreBackground from '../assets/lore-hero.jpg'
 import DorminImage from '../assets/fan-teorier-hero.jpg'
 import EmonImage from '../assets/kart-hero.jpg'

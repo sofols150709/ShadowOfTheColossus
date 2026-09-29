@@ -1,4 +1,4 @@
-import heroImg from '../../assets/Hero.png'
+import heroImg from '../../assets/hero.png'
 import { usePreferences } from '../Preferences/usePreferences.js'
 
 function HomeHero() {
