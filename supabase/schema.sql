@@ -19,12 +19,68 @@ create table if not exists public.votes (
 alter table public.comments enable row level security;
 alter table public.votes enable row level security;
 
-create policy "Comments are readable by everyone" on public.comments for select using (true);
-create policy "Users create their own comments" on public.comments for insert to authenticated with check (auth.uid() = user_id);
-create policy "Users delete their own comments" on public.comments for delete to authenticated using (auth.uid() = user_id);
-create policy "Votes are readable by everyone" on public.votes for select using (true);
-create policy "Users create their own vote" on public.votes for insert to authenticated with check (auth.uid() = user_id);
-create policy "Users update their own vote" on public.votes for update to authenticated using (auth.uid() = user_id) with check (auth.uid() = user_id);
+do $$
+begin
+  if not exists (
+    select 1 from pg_policies
+    where schemaname = 'public' and tablename = 'comments'
+      and policyname = 'Comments are readable by everyone'
+  ) then
+    create policy "Comments are readable by everyone"
+      on public.comments for select using (true);
+  end if;
+
+  if not exists (
+    select 1 from pg_policies
+    where schemaname = 'public' and tablename = 'comments'
+      and policyname = 'Users create their own comments'
+  ) then
+    create policy "Users create their own comments"
+      on public.comments for insert to authenticated
+      with check (auth.uid() = user_id);
+  end if;
+
+  if not exists (
+    select 1 from pg_policies
+    where schemaname = 'public' and tablename = 'comments'
+      and policyname = 'Users delete their own comments'
+  ) then
+    create policy "Users delete their own comments"
+      on public.comments for delete to authenticated
+      using (auth.uid() = user_id);
+  end if;
+
+  if not exists (
+    select 1 from pg_policies
+    where schemaname = 'public' and tablename = 'votes'
+      and policyname = 'Votes are readable by everyone'
+  ) then
+    create policy "Votes are readable by everyone"
+      on public.votes for select using (true);
+  end if;
+
+  if not exists (
+    select 1 from pg_policies
+    where schemaname = 'public' and tablename = 'votes'
+      and policyname = 'Users create their own vote'
+  ) then
+    create policy "Users create their own vote"
+      on public.votes for insert to authenticated
+      with check (auth.uid() = user_id);
+  end if;
+
+  if not exists (
+    select 1 from pg_policies
+    where schemaname = 'public' and tablename = 'votes'
+      and policyname = 'Users update their own vote'
+  ) then
+    create policy "Users update their own vote"
+      on public.votes for update to authenticated
+      using (auth.uid() = user_id)
+      with check (auth.uid() = user_id);
+  end if;
+end
+$$;
 
 create index if not exists comments_theory_created_idx on public.comments(theory_id, created_at desc);
 create index if not exists votes_theory_idx on public.votes(theory_id);
